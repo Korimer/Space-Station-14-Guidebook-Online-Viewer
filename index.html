@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Space Station 14 Online Guidebook</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Space Station 14 Online Guidebook</title>
+  </head>
 
-<body style="background-color: navy">
-    <script type="module">
-      let mainpage = await fetch("https://www.google.com")
-      console.log(mainpage)
-    </script>
-</body>
+  <body style="background-color: navy">
+    <div id="GuideEntryContent">
+
+      <script type="module">
+      let header = document.createElement("h2")
+      header.innerText = "Hi hi header"
+      document.getElementById("GuideEntryContent").appendChild(header)
+      console.log("help")
+      const url = "https://api.github.com/repos/space-wizards/space-station-14/contents/Resources/ServerInfo/Guidebook/Chemicals.xml?ref=3cbe2103f6185f911a56b1daf5d1a0c7b5485279"
+
+      fetch(url)
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.text();
+                  })
+        .then(xml => {
+            console.log("XML content:", xml);
+              })
+        .catch(err => console.error(err));
+      </script>
+
+      <div>hi this is my text</div>
+
+    </div>
+  </body>
 
 </html>
