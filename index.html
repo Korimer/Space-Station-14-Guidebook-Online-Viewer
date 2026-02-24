@@ -6,6 +6,16 @@
   </head>
 
   <body style="background-color: navy">
+    <input type="password" id="tokenEntry">
+    <script>
+    const GH_URL = "https://api.github.com"
+    </script>
+    <script type="module">
+    let setToken function(tkn) {
+      fetch(`${GH_URL}/`)
+      localStorage.setItem()
+    }
+    </script>
     <div id="GuideEntryContent">
 
       <script type="module">
@@ -13,9 +23,13 @@
       header.innerText = "Hi hi header"
       document.getElementById("GuideEntryContent").appendChild(header)
       console.log("help")
-      const url = "https://api.github.com/repos/space-wizards/space-station-14/contents/Resources/ServerInfo/Guidebook/Chemicals.xml?ref=3cbe2103f6185f911a56b1daf5d1a0c7b5485279"
+      const url = `${GH_URL}`
 
-      fetch(url)
+      fetch(url, {
+        headers: {
+          "Authorization": `token ${"lol"}`,
+          "accept": "application/vnd.github.raw+json"
+        }})
         .then(res => {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.text();
